@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TXT AGENCIES | Digital Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<style>
+    :root {
+        --primary: #2563eb;
+        --secondary: #7c3aed;
+        --accent: #f43f5e;
+        --dark: #0f172a;
+        --light: #f8fafc;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: var(--light);
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+    }
+    
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2232&auto=format&fit=crop') no-repeat center center/cover;
+        opacity: 0.15;
+        z-index: -1;
+    }
+    
+    .top-bar {
+        background: rgba(253, 253, 253, 0.8);
+        backdrop-filter: blur(10px);
+        width: 100%;
+        padding: 1rem 2rem;
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .top-bar h4 {
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 500;
+        font-size: 1.1rem;
+        text-align: center;
+        letter-spacing: 1px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-transform: uppercase;
+    }
+    
+    .hero {
+        margin-top: 5rem;
+        padding: 2rem;
+        text-align: center;
+    }
+    
+    .hero h1 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(90deg, #f43f5e, #f97316);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 0 10px rgba(244, 63, 94, 0.3);
+    }
+    
+    .tagline {
+        display: inline-block;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin: 1rem 0;
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    
+    .feature-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        padding: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    
+    .feature-card {
+        width: 350px;
+        height: 350px;
+        border-radius: 15px;
+        overflow: hidden;
+        position: relative;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .feature-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        z-index: 1;
+    }
+    
+    .feature-card h5 {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        z-index: 2;
+        font-size: 1.5rem;
+        color: white;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+    
+    .feature-card .card-label {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+        background: rgba(15, 23, 42, 0.8);
+        backdrop-filter: blur(5px);
+        text-align: center;
+        color: white;
+        font-weight: 600;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+        z-index: 3;
+    }
+    
+    .feature-card:hover .card-label {
+        transform: translateY(0);
+    }
+    
+    .cta-section {
+        background: linear-gradient(135deg, var(--dark), #1e293b);
+        padding: 4rem 2rem;
+        text-align: center;
+        margin-top: 2rem;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .cta-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(244, 63, 94, 0.1) 0%, transparent 70%);
+        animation: rotate 20s linear infinite;
+        z-index: 0;
+    }
+    
+    @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    .cta-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .cta-content h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(90deg, white, #a5b4fc);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    
+    .social-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .social-button {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.8rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        color: white;
+    }
+    
+    .social-button.whatsapp {
+        background: linear-gradient(90deg, #25D366, #128C7E);
+    }
+    
+    .social-button.facebook {
+        background: linear-gradient(90deg, #1877F2, #0A58CA);
+    }
+    
+    .social-button.instagram {
+        background: linear-gradient(90deg, #E1306C, #833AB4);
+    }
+    
+    .social-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .info-section {
+        padding: 3rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .info-section h4 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--accent);
+    }
+    
+    .info-section ul {
+        list-style: none;
+        margin-bottom: 2rem;
+    }
+    
+    .info-section li {
+        padding: 0.5rem 0;
+        position: relative;
+        padding-left: 1.5rem;
+    }
+    
+    .info-section li::before {
+        content: '▹';
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+    }
+    
+    .contact-info {
+        margin-top: 2rem;
+    }
+    
+    .contact-info a {
+        color: var(--primary);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    .contact-info a:hover {
+        color: var(--accent);
+        text-decoration: underline;
+    }
+    
+    .footer {
+        background: rgba(15, 23, 42, 0.9);
+        padding: 2rem;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .footer p {
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+    
+    .logo-circle {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 2rem auto;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        border: 3px solid rgba(255, 255, 255, 0.1);
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+    }
+    
+    .logo-circle img {
+        width: 80%;
+        height: 80%;
+        object-fit: contain;
+    }
+    
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 2rem;
+        }
+        
+        .feature-card {
+            width: 100%;
+            max-width: 350px;
+        }
+        
+        .social-buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+     /* [Previous CSS remains exactly the same until the footer section] */
+    
+    /* Enhanced Footer Styles */
+    .footer {
+        background: rgba(15, 23, 42, 0.95);
+        padding: 1.5rem 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+    
+    .footer-column h5 {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        color: var(--primary);
+        position: relative;
+        padding-bottom: 0.5rem;
+    }
+    
+    .footer-column h5::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 50px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+    
+    .footer-links {
+        list-style: none;
+    }
+    
+    .footer-links li {
+        margin-bottom: 0.8rem;
+    }
+    
+    .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .footer-links a:hover {
+        color: white;
+        transform: translateX(5px);
+    }
+    
+    .footer-links a i {
+        font-size: 0.8rem;
+    }
+    
+    .footer-about p {
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+    
+    .footer-social {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    
+    .footer-social a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        transition: all 0.3s ease;
+    }
+    
+    .footer-social a:hover {
+        background: var(--primary);
+        transform: translateY(-3px);
+    }
+    
+    .footer-newsletter input {
+        width: 100%;
+        padding: 0.8rem;
+        border: none;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+    }
+    
+    .footer-newsletter button {
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        color: white;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+    }
+    
+    .footer-newsletter button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+    }
+    
+    .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        margin-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .footer-bottom p {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.9rem;
+    }
+    
+    .footer-bottom p a {
+        color: var(--primary);
+        text-decoration: none;
+    }
+    
+    .footer-motto {
+        font-style: italic;
+        margin-top: 0.5rem;
+        color: rgba(255, 255, 255, 0.8);
+    }
+    
+    @media (max-width: 768px) {
+        .footer-container {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<body>
+    <div class="top-bar">
+        <h4><i class="fas fa-code"></i> YOURS IS NEXT... LET'S MAKE THE WORLD A BETTER PLACE FOR ALL OF US <i class="fas fa-globe"></i></h4>
+    </div>
+    
+    <div class="hero">
+        <h1>Welcome to TXTechnologies</h1>
+        <p class="tagline">TOGETHER WE CAN ADVANCE</p>
+        
+        <div class="logo-circle">
+            <!-- Replace with your logo -->
+            <i class="fas fa-code-branch" style="font-size: 3rem; color: white;"></i>
+        </div>
+        
+        <p style="max-width: 800px; margin: 0 auto; line-height: 1.6;">
+            TXT focuses on improving lives through digital solutions including Digital Marketing, 
+            Website Creation, App Development, and digital investments to empower businesses and individuals.
+        </p>
+    </div>
+    
+    <div class="feature-cards">
+        <div class="feature-card" style="background: url('https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=2072&auto=format&fit=crop') center/cover;">
+            <h5>School Websites</h5>
+            <div class="card-label">Custom solutions for educational institutions</div>
+        </div>
+        
+        <div class="feature-card" style="background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop') center/cover;">
+            <h5>Organization Websites</h5>
+            <div class="card-label">Professional sites for NGOs and companies</div>
+        </div>
+        
+        <div class="feature-card" style="background: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=2070&auto=format&fit=crop') center/cover;">
+            <h5>Business Websites</h5>
+            <div class="card-label">Boost your online presence</div>
+        </div>
+        
+        <div class="feature-card" style="background: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop') center/cover;">
+            <h5>Hotel Websites</h5>
+            <div class="card-label">Showcase your hospitality business</div>
+        </div>
+        
+        <div class="feature-card" style="background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop') center/cover;">
+            <h5>Digital Marketing</h5>
+            <div class="card-label">Grow your audience online</div>
+        </div>
+        
+        <div class="feature-card" style="background: url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=2070&auto=format&fit=crop') center/cover;">
+            <h5>Personal Websites</h5>
+            <div class="card-label">Build your personal brand</div>
+        </div>
+        
+        <div class="feature-card" style="background: url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=2069&auto=format&fit=crop') center/cover;">
+            <h5>Business Cards</h5>
+            <div class="card-label">Digital and print solutions</div>
+        </div>
+        
+        <div class="feature-card" style="background: url('https://images.unsplash.com/photo-1545239351-ef35f43d514b?q=80&w=2148&auto=format&fit=crop') center/cover;">
+            <h5>Blog Websites</h5>
+            <div class="card-label">Share your ideas with the world</div>
+        </div>
+    </div>
+    
+    <div class="cta-section">
+        <div class="cta-content">
+            <h2>You Can Be The Next Big Thing</h2>
+            <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                Like Jumia, Facebook, WhatsApp and other major digital platforms, 
+                we can help you build your digital presence and increase your earnings.
+            </p>
+            
+            <div class="social-buttons">
+                <a href="#" class="social-button whatsapp">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="#" class="social-button facebook">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a href="#" class="social-button instagram">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="info-section">
+        <h4>Our Services</h4>
+        <ul>
+            <li>Marketing Websites</li>
+            <li>School Websites</li>
+            <li>Hotel Websites</li>
+            <li>Organization Websites</li>
+            <li>E-commerce Solutions</li>
+            <li>Custom Web Applications</li>
+            <li>Digital Marketing Strategies</li>
+        </ul>
+         <!-- [All previous HTML content remains exactly the same until the footer section] -->
+    
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-column footer-about">
+                <h5>About TXTechnologies</h5>
+                <p>We are a digital solutions agency dedicated to helping businesses and individuals establish their online presence through innovative web development, digital marketing, and custom software solutions.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h5>Quick Links</h5>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Services</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h5>Our Services</h5>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Website Development</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Mobile Apps</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Digital Marketing</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> SEO Services</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> UI/UX Design</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column footer-newsletter">
+                <h5>Newsletter</h5>
+                <p>Subscribe to our newsletter for the latest updates and offers.</p>
+                <form>
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 <a href="#">TXTechnologies</a>. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            <p class="footer-motto">"True Feelings Never Hide"</p>
+        </div>
+    </div>
+
+</html>
+</body>
+</html>
